@@ -1,4 +1,4 @@
-![LOGIK](https://github.com/kyomahooin/Logik/raw/master/logik.png "logik")
+![LOGIK](https://github.com/KyomaHooin/Logik/blob/main/logik.png?raw=true "logik")
 
 Logik - Deskboard game replacement piece.
 
