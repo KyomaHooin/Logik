@@ -2,16 +2,12 @@
 //LOGIK Retro hra - Náhradní díl
 //
 
-w_max=77;// w-idth
-d_max=17.75;//   d-epth
-h_max=14;//   h-eight
-t_max=1.5;//    t-hick
-//w_max=77.5;// w-idth
-//d_max=18;//   d-epth
-//h_max=14;//   h-eight
-//t_max=2;//    t-hick
+w=77;//    w-idth
+d=17.75;// d-epth
+h=14;//    h-eight
+t=1.5;//   t-hick
 
-module poly(w,d,h) {
+difference(){
     polyhedron(
         points=[
         [h,0,0],//0
@@ -19,13 +15,37 @@ module poly(w,d,h) {
         [12,d,0],//2
         [0,10,0],//3
         [0,2,0],//4
+
         [h,0,w],//5
         [h,d,w],//6
         [12,d,w],//7
-        [0,10,w],//8
+        [0,10,w],//8    
         [0,2,w]],//9
         faces=[
-        [0,1,2,3,4],//bottom
+        [0,1,2,3,4],
+        [5,6,1,0],
+        [2,1,6,7],
+        [3,2,7,8],
+        [4,3,8,9],
+        [0,4,9,5],
+        [9,8,7,6,5]
+    ]);
+    translate([0.1,-0.1,t])//0.1 cheat fix
+    polyhedron(
+        points=[
+        [h,0,0],//0
+        [h,d-t,0],//1
+        [h-(h-t)/7,d-t,0],//2
+        [t,(d-t)/d*10,0],//3
+        [t,(d-t)/d*2,0],//4
+
+        [h,0,w-2*t],//5
+        [h,d-t,w-2*t],//6
+        [h-(h-t)/7,d-t,w-2*t],//7
+        [t,(d-t)/d*10,w-2*t],//8
+        [t,(d-t)/d*2,w-2*t]],//9
+        faces=[
+        [0,1,2,3,4],
         [5,6,1,0],
         [2,1,6,7],
         [3,2,7,8],
@@ -34,9 +54,3 @@ module poly(w,d,h) {
         [9,8,7,6,5]
     ]);
 }
-
-difference(){
-    poly(w_max,d_max,h_max);
-    translate([t_max,-t_max,t_max]) poly(w_max-2*t_max,d_max,h_max);
-}
-
